@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@blockchain.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "role": "admin",
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "email": "user@blockchain.com",
+      "password": "user123",
+      "name": "Demo User",
+      "role": "user",
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
+      "createdAt": "2024-01-15T00:00:00.000Z"
+    }
+  ],
+  "scalingSolutions": {
+    "Ethereum Mainnet": {
+      "maxTps": 15,
+      "costPerTx": 15,
+      "finality": "12s",
+      "bestFor": "High value txns",
+      "color": "ethereum"
+    },
+    "State Channels": {
+      "maxTps": 1000,
+      "costPerTx": 0.01,
+      "finality": "Instant",
+      "bestFor": "Gaming, IoT",
+      "color": "channels"
+    },
+    "Optimistic Rollups": {
+      "maxTps": 4000,
+      "costPerTx": 0.5,
+      "finality": "7 days",
+      "bestFor": "DeFi, NFTs",
+      "color": "optimistic"
+    },
+    "ZK-Rollups + Sharding": {
+      "maxTps": 9000,
+      "costPerTx": 0.1,
+      "finality": "10 min",
+      "bestFor": "Payments, DEX",
+      "color": "zk"
+    }
+  },
+  "layer2Networks": {
+    "arbitrum": {
+      "name": "Arbitrum",
+      "baseTps": 4000,
+      "baseCost": 0.5,
+      "baseLoad": 45
+    },
+    "optimism": {
+      "name": "Optimism", 
+      "baseTps": 3500,
+      "baseCost": 0.8,
+      "baseLoad": 60
+    },
+    "polygon": {
+      "name": "Polygon",
+      "baseTps": 7000,
+      "baseCost": 0.01,
+      "baseLoad": 35
+    }
+  },
+  "marketData": {
+    "baseEthPrice": 2400,
+    "baseTvl": 45000000000,
+    "baseDailyTxns": 1200000
+  },
+  "ethereumData": {
+    "baseTps": 15,
+    "baseGasPrice": 25,
+    "baseBlockTime": 12,
+    "baseNetworkLoad": 75
+  }
+}

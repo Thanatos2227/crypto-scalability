@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Scalability Solutions - Live Dashboard</title>
+    <meta name="description" content="Interactive blockchain scalability dashboard with live metrics, scaling calculators, and comprehensive analysis of Layer 2 protocols, sharding, and rollup technologies.">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading Blockchain Dashboard...</p>
+        </div>
+    </div>
+
+    <div id="login-container" class="login-container">
+        <div class="animated-bg">
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+        </div>
+        
+        <div class="demo-toggle">
+            <span class="demo-badge">Demo Mode</span>
+            <button id="demo-toggle-btn" class="demo-btn">
+                <i class="fas fa-eye-slash"></i>
+                Login
+            </button>
+        </div>
+
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h1>Blockchain Dashboard</h1>
+                <p>Secure access to scalability analytics</p>
+                <div class="security-badge">
+                    🔒 Enhanced Security System
+                </div>
+            </div>
+
+            <div class="login-tabs">
+                <button class="tab-btn active" data-tab="login">Sign In</button>
+                <button class="tab-btn" data-tab="register">Sign Up</button>
+            </div>
+
+            <div id="login-tab" class="tab-content active">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="login-email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" aria-label="Show or hide password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <div class="role-buttons">
+                            <button type="button" class="role-btn active" data-role="user">
+                                <i class="fas fa-user"></i>
+                                User
+                            </button>
+                            <button type="button" class="role-btn" data-role="admin">
+                                <i class="fas fa-shield-alt"></i>
+                                Admin
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Sign In</span>
+                        <div class="btn-spinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Signing in...
+                        </div>
+                    </button>
+                </form>
+
+                <div class="demo-credentials">
+                    <p>Demo Credentials:</p>
+                    <div class="demo-buttons">
+                        <button class="demo-fill-btn" data-role="user">Demo User</button>
+                        <button class="demo-fill-btn" data-role="admin">Demo Admin</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="register-tab" class="tab-content">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="register-name" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="register-email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="register-password" placeholder="Create a password" required>
+                            <button type="button" class="toggle-password" aria-label="Show or hide password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                        </div>
+                    </div>
+
+                    <div id="register-error" class="error-message" style="display: none;"></div>
+                    <div id="register-success" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="submit-btn register-btn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="btn-spinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Creating account...
+                        </div>
+                    </button>
+                </form>
+            </div>
+
+            <div class="security-info">
+                <h4>🔐 Security Features</h4>
+                <ul>
+                    <li>• Role-based access control (User/Admin)</li>
+                    <li>• Protected routes and authentication</li>
+                    <li>• Session management with localStorage</li>
+                    <li>• Password visibility toggle</li>
+                    <li>• Form validation and error handling</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-container" class="dashboard-container" style="display: none;">
+        <header class="nav-header">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <h1 class="nav-title">Blockchain Dashboard</h1>
+                    <div id="user-badge" class="user-badge">User Dashboard</div>
+                </div>
+                <div class="nav-right">
+                    <span id="welcome-text" class="welcome-text">Welcome back, User</span>
+                    <div class="user-dropdown">
+                        <button class="user-btn" id="user-menu-btn">
+                            <div class="user-avatar">
+                                <span id="user-initials">U</span>
+                            </div>
+                            <span id="user-name">User</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu" id="user-dropdown-menu">
+                            <div class="dropdown-header">
+                                <p id="dropdown-name">User Name</p>
+                                <p id="dropdown-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90e5e3f5e2d0f5e8f1fde0fcf5bef3fffd">[email&#160;protected]</a></p>
+                            </div>
+                            <button class="dropdown-item" id="profile-btn">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </button>
+                            <button class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </button>
+                            <div id="admin-item" class="dropdown-item admin-item" style="display: none;">
+                                <i class="fas fa-shield-alt"></i>
+                                Admin Panel
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item logout-btn" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sign out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="animated-bg">
+                <div class="bg-element bg-element-1"></div>
+                <div class="bg-element bg-element-2"></div>
+                <div class="bg-element bg-element-3"></div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Blockchain Scalability Solutions</h1>
+                    <p class="dashboard-subtitle">
+                        Live blockchain scaling dashboard with real-time metrics, interactive calculators, 
+                        and comprehensive analysis of Layer 2 protocols, sharding, rollups, and network optimization.
+                    </p>
+                    <div class="loading-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+
+                <div class="dashboard-tabs">
+                    <button class="dashboard-tab active" data-tab="live">Live Data</button>
+                    <button class="dashboard-tab" data-tab="calculator">Calculator</button>
+                    <button class="dashboard-tab" data-tab="layer2">Layer 2</button>
+                    <button class="dashboard-tab" data-tab="sharding">Sharding</button>
+                    <button class="dashboard-tab" data-tab="rollups">Rollups</button>
+                    <button class="dashboard-tab" data-tab="network">Network</button>
+                </div>
+
+                <div id="live-tab" class="dashboard-tab-content active">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <i class="fas fa-dollar-sign text-green"></i>
+                                <span>ETH Price</span>
+                            </div>
+                            <div class="metric-value" id="eth-price">$2,400</div>
+                            <div class="metric-status">
+                                <i class="fas fa-trending-up text-green"></i>
+                                <span class="text-green">Live</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <i class="fas fa-chart-line text-blue"></i>
+                                <span>Total TVL</span>
+                            </div>
+                            <div class="metric-value" id="total-tvl">$45.0B</div>
+                            <div class="metric-status">
+                                <i class="fas fa-trending-up text-blue"></i>
+                                <span class="text-blue">All Chains</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <i class="fas fa-bolt text-yellow"></i>
+                                <span>Daily Txns</span>
+                            </div>
+                            <div class="metric-value" id="daily-txns">1.2M</div>
+                            <div class="metric-status">
+                                <i class="fas fa-chart-line text-yellow"></i>
+                                <span class="text-yellow">24h Volume</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <i class="fas fa-clock text-purple"></i>
+                                <span>Block Time</span>
+                            </div>
+                            <div class="metric-value" id="block-time">12.0s</div>
+                            <div class="metric-status">
+                                <i class="fas fa-chart-line text-purple"></i>
+                                <span class="text-purple">Ethereum</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="performance-grid">
+                        <div class="performance-card">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line text-blue"></i>
+                                <h3>Ethereum Mainnet (Live)</h3>
+                                <p>Real-time Layer 1 performance</p>
+                            </div>
+                            <div class="performance-metrics">
+                                <div class="performance-item">
+                                    <div class="performance-label">
+                                        <span>Transactions per Second</span>
+                                        <span id="eth-tps" class="performance-value">15.0 TPS</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div id="eth-tps-progress" class="progress-fill" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="performance-item">
+                                    <div class="performance-label">
+                                        <span>Gas Price</span>
+                                        <span id="eth-gas" class="performance-value">25 Gwei</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div id="eth-gas-progress" class="progress-fill" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+
+                                <div class="performance-item">
+                                    <div class="performance-label">
+                                        <span>Network Load</span>
+                                        <span id="eth-load" class="performance-value">75%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div id="eth-load-progress" class="progress-fill" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+
+                                <div id="eth-status" class="status-badge status-normal">Normal Operation</div>
+                            </div>
+                        </div>
+
+                        <div class="performance-card">
+                            <div class="card-header">
+                                <i class="fas fa-bolt text-purple"></i>
+                                <h3>Layer 2 Networks (Live)</h3>
+                                <p>Real-time L2 scaling performance</p>
+                            </div>
+                            <div class="l2-networks" id="l2-networks">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="live-status">
+                        <div class="live-indicator"></div>
+                        <span>Live data updating every 3 seconds • Last update: <span id="last-update">--:--:--</span></span>
+                    </div>
+                </div>
+
+                <div id="calculator-tab" class="dashboard-tab-content">
+                    <div class="calculator-card">
+                        <div class="card-header">
+                            <i class="fas fa-calculator text-blue"></i>
+                            <h3>Interactive Scaling Calculator</h3>
+                            <p>Find the optimal scaling solution for your use case</p>
+                        </div>
+                        
+                        <div class="calculator-content">
+                            <div class="calculator-inputs">
+                                <div class="input-section">
+                                    <label>Daily Transaction Volume: <span id="volume-display">10,000</span></label>
+                                    <input type="range" id="volume-slider" min="100" max="1000000" step="1000" value="10000" class="slider">
+                                    <div class="slider-labels">
+                                        <span>100</span>
+                                        <span>1M transactions/day</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-section">
+                                    <label>Expected Users: <span id="users-display">1,000</span></label>
+                                    <input type="range" id="users-slider" min="10" max="100000" step="100" value="1000" class="slider">
+                                    <div class="slider-labels">
+                                        <span>10</span>
+                                        <span>100K users</span>
+                                    </div>
+                                </div>
+
+                                <button id="calculate-btn" class="calculate-btn">
+                                    <i class="fas fa-calculator"></i>
+                                    Calculate Optimal Solution
+                                </button>
+                            </div>
+
+                            <div id="calculation-result" class="calculation-result" style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="comparison-matrix">
+                            <h4>Quick Comparison Matrix</h4>
+                            <div class="matrix-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Solution</th>
+                                            <th>TPS</th>
+                                            <th>Cost</th>
+                                            <th>Finality</th>
+                                            <th>Best For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ethereum</td>
+                                            <td>15</td>
+                                            <td>$15</td>
+                                            <td>12s</td>
+                                            <td>High value txns</td>
+                                        </tr>
+                                        <tr>
+                                            <td>State Channels</td>
+                                            <td>1000+</td>
+                                            <td>$0.01</td>
+                                            <td>Instant</td>
+                                            <td>Gaming, IoT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optimistic Rollups</td>
+                                            <td>4000</td>
+                                            <td>$0.50</td>
+                                            <td>7 days</td>
+                                            <td>DeFi, NFTs</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZK-Rollups</td>
+                                            <td>9000+</td>
+                                            <td>$0.10</td>
+                                            <td>10 min</td>
+                                            <td>Payments, DEX</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="layer2-tab" class="dashboard-tab-content">
+                    <div class="info-card">
+                        <h3>Layer 2 Protocols</h3>
+                        <p>Comprehensive analysis of Layer 2 scaling solutions including Optimistic Rollups, ZK-Rollups, State Channels, and Sidechains.</p>
+                    </div>
+                </div>
+
+                <div id="sharding-tab" class="dashboard-tab-content">
+                    <div class="info-card">
+                        <h3>Sharding Visualizer</h3>
+                        <p>Interactive visualization of blockchain sharding mechanisms and their impact on network scalability.</p>
+                    </div>
+                </div>
+
+                <div id="rollups-tab" class="dashboard-tab-content">
+                    <div class="info-card">
+                        <h3>Rollup Comparison</h3>
+                        <p>Detailed comparison between Optimistic and ZK-Rollups technologies with performance metrics and use cases.</p>
+                    </div>
+                </div>
+
+                <div id="network-tab" class="dashboard-tab-content">
+                    <div class="info-card">
+                        <h3>Network Topology</h3>
+                        <p>Visualization of blockchain network topology with transaction flows and node connections.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="profile-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="profile-close">&times;</button>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <span id="profile-initials">U</span>
+                    </div>
+                    <h2 id="profile-name">User Name</h2>
+                    <p id="profile-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="631610061123061b020e130f064d000c0e">[email&#160;protected]</a></p>
+                    <div id="profile-role-badge" class="role-badge">User</div>
+                </div>
+                
+                <div class="profile-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                        <span id="profile-email-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="493c3a2c3b092c31282439252c672a2624">[email&#160;protected]</a></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Member since</span>
+                        <span id="profile-date">Jan 1, 2024</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Account Type</span>
+                        <span id="profile-role">User</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="profile-btn">
+                        <i class="fas fa-cog"></i>
+                        Account Settings
+                    </button>
+                    <button class="profile-btn logout-btn" id="profile-logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sign Out
+                    </button>
+                </div>
+
+                <div id="admin-privileges" class="admin-privileges" style="display: none;">
+                    <div class="admin-info">
+                        <div class="admin-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Admin Privileges</span>
+                        </div>
+                        <p>You have full access to all dashboard features including live data management, user analytics, and system configuration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="data.js"></script>
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
